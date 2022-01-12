@@ -1,0 +1,22 @@
+server:
+  port: 8999
+  
+
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+          - Path=/user-service/**
+        - id: contact-service
+          uri: lb://contact-service
+          predicates:
+          - Path=/contact-service/**
+                
+
+    
+  
